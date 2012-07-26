@@ -29,7 +29,7 @@
         channels = [mChannels copy];
         channelIndex = -1;
         [self hopChannel];
-        hopTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(hopChannel) userInfo:nil repeats:YES];
+        hopTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(hopChannel) userInfo:nil repeats:YES];
         
         [sniffer setDelegate:self];
         [sniffer start];
@@ -43,7 +43,7 @@
     clientsTable = [[NSTableView alloc] initWithFrame:[[clientsScrollView contentView] bounds]];
     backButton = [[NSButton alloc] initWithFrame:NSMakeRect(10, 10, 100, 24)];
     continueButton = [[NSButton alloc] initWithFrame:NSMakeRect(frame.size.width - 110, 10, 100, 24)];
-    
+        
     [backButton setBezelStyle:NSRoundedBezelStyle];
     [backButton setTitle:@"Back"];
     [backButton setFont:[NSFont systemFontOfSize:13]];
@@ -93,6 +93,11 @@
     [self addSubview:clientsScrollView];
     [self addSubview:continueButton];
     [self addSubview:backButton];
+    
+    [self setAutoresizesSubviews:YES];
+    [self setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
+    [clientsScrollView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
+    [continueButton setAutoresizingMask:(NSViewMinXMargin)];
 }
 
 - (void)backButton:(id)sender {

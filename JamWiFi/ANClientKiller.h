@@ -12,7 +12,7 @@
 #import "MACParser.h"
 
 @interface ANClientKiller : NSView <ANWiFiSnifferDelegate, NSTableViewDelegate, NSTableViewDataSource> {
-    NSArray * clients;
+    NSMutableArray * clients;
     NSArray * channels;
     NSDictionary * networksForChannel;
     int channelIndex;
@@ -23,6 +23,8 @@
     NSScrollView * infoScrollView;
     NSButton * backButton;
     NSButton * doneButton;
+    
+    NSButton * newClientsCheck;
 }
 
 - (id)initWithFrame:(NSRect)frame sniffer:(ANWiFiSniffer *)theSniffer networks:(NSArray *)networks clients:(NSArray *)theClients;
@@ -33,5 +35,6 @@
 
 - (void)performNextRound;
 - (AN80211Packet *)deauthPacketForBSSID:(const unsigned char *)bssid client:(const unsigned char *)client;
+- (BOOL)includesBSSID:(const unsigned char *)bssid;
 
 @end

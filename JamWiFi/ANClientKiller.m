@@ -18,7 +18,7 @@
 
 - (id)initWithFrame:(NSRect)frame sniffer:(ANWiFiSniffer *)theSniffer networks:(NSArray *)networks clients:(NSArray *)theClients {
     if ((self = [super initWithFrame:frame])) {
-        clients = theClients;
+        clients = [theClients mutableCopy];
         sniffer = theSniffer;
         [sniffer setDelegate:self];
         [sniffer start];
@@ -58,6 +58,12 @@
     infoTable = [[NSTableView alloc] initWithFrame:[[infoScrollView contentView] bounds]];
     doneButton = [[NSButton alloc] initWithFrame:NSMakeRect(frame.size.width - 110, 10, 100, 24)];
     backButton = [[NSButton alloc] initWithFrame:NSMakeRect(frame.size.width - 210, 10, 100, 24)];
+    newClientsCheck = [[NSButton alloc] initWithFrame:NSMakeRect(10, 10, 200, 24)];
+    
+    [newClientsCheck setButtonType:NSSwitchButton];
+    [newClientsCheck setBezelStyle:NSRoundedBezelStyle];
+    [newClientsCheck setTitle:@"Actively scan for clients"];
+    [newClientsCheck setState:1];
     
     [backButton setBezelStyle:NSRoundedBezelStyle];
     [backButton setTitle:@"Back"];
@@ -70,6 +76,12 @@
     [doneButton setFont:[NSFont systemFontOfSize:13]];
     [doneButton setTarget:self];
     [doneButton setAction:@selector(doneButton:)];
+    
+    NSTableColumn * enabledColumn = [[NSTableColumn alloc] initWithIdentifier:@"enabled"];
+    [[enabledColumn headerCell] setStringValue:@"Jam"];
+    [enabledColumn setWidth:30];
+    [enabledColumn setEditable:YES];
+    [infoTable addTableColumn:enabledColumn];
     
     NSTableColumn * stationColumn = [[NSTableColumn alloc] initWithIdentifier:@"station"];
     [[stationColumn headerCell] setStringValue:@"Station"];
@@ -96,6 +108,13 @@
     [self addSubview:infoScrollView];
     [self addSubview:backButton];
     [self addSubview:doneButton];
+    [self addSubview:newClientsCheck];
+    
+    [self setAutoresizesSubviews:YES];
+    [self setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
+    [infoScrollView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
+    [doneButton setAutoresizingMask:(NSViewMinXMargin)];
+    [backButton setAutoresizingMask:(NSViewMinXMargin)];
 }
 
 #pragma mark - Events -
@@ -133,8 +152,27 @@
         return MACToString(client.macAddress);
     } else if ([[tableColumn identifier] isEqualToString:@"count"]) {
         return [NSNumber numberWithInt:client.deauthsSent];
+    } else if ([[tableColumn identifier] isEqualToString:@"enabled"]) {
+        return [NSNumber numberWithBool:client.enabled];
     }
     return nil;
+}
+
+- (NSCell *)tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    if ([[tableColumn identifier] isEqualToString:@"enabled"]) {
+        NSButtonCell * cell = [[NSButtonCell alloc] init];
+        [cell setButtonType:NSSwitchButton];
+        [cell setTitle:@""];
+        return cell;
+    }
+    return nil;
+}
+
+- (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    ANClient * client = [clients objectAtIndex:row];
+    if ([[tableColumn identifier] isEqualToString:@"enabled"]) {
+        [client setEnabled:[object boolValue]];
+    }
 }
 
 #pragma mark - Deauthing -
@@ -171,9 +209,61 @@
     return packet;
 }
 
+- (BOOL)includesBSSID:(const unsigned char *)bssid {
+    for (id key in networksForChannel) {
+        for (CWNetwork * network in [networksForChannel objectForKey:key]) {
+            if ([MACToString(bssid) isEqualToString:network.bssid]) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
 #pragma mark - WiFi Sniffer -
 
 - (void)wifiSniffer:(ANWiFiSniffer *)sniffer gotPacket:(AN80211Packet *)packet {
+    if (![newClientsCheck state]) return;
+    BOOL hasClient = NO;
+    unsigned char client[6];
+    unsigned char bssid[6];
+    if ([packet dataFCS] != [packet calculateFCS]) return;
+    if (packet.macHeader->frame_control.from_ds == 0 && packet.macHeader->frame_control.to_ds == 1) {
+        memcpy(bssid, packet.macHeader->mac1, 6);
+        if (![self includesBSSID:bssid]) return;
+        memcpy(client, packet.macHeader->mac2, 6);
+        hasClient = YES;
+    } else if (packet.macHeader->frame_control.from_ds == 0 && packet.macHeader->frame_control.to_ds == 0) {
+        memcpy(bssid, packet.macHeader->mac3, 6);
+        if (![self includesBSSID:bssid]) return;
+        if (memcmp(packet.macHeader->mac2, packet.macHeader->mac3, 6) != 0) {
+            memcpy(client, packet.macHeader->mac2, 6);
+            hasClient = YES;
+        }
+    } else if (packet.macHeader->frame_control.from_ds == 1 && packet.macHeader->frame_control.to_ds == 0) {
+        memcpy(bssid, packet.macHeader->mac2, 6);
+        if (![self includesBSSID:bssid]) return;
+        memcpy(client, packet.macHeader->mac1, 6);
+        hasClient = YES;
+    }
+    if (client[0] == 0x33 && client[1] == 0x33) hasClient = NO;
+    if (client[0] == 0x01 && client[1] == 0x00) hasClient = NO;
+    if (client[0] == 0xFF && client[1] == 0xFF) hasClient = NO;
+    if (client[0] == 0x03 && client[5] == 0x01) hasClient = NO;
+    if (hasClient) {
+        ANClient * clientObj = [[ANClient alloc] initWithMac:client bssid:bssid];
+        BOOL containsClient = NO;
+        for (ANClient * aClient in clients) {
+            if (memcmp(aClient.macAddress, clientObj.macAddress, 6) == 0) {
+                containsClient = YES;
+                break;
+            }
+        }
+        if (!containsClient) {
+            [clients addObject:clientObj];
+            [infoTable reloadData];
+        }
+    }
 }
 
 - (void)wifiSniffer:(ANWiFiSniffer *)sniffer failedWithError:(NSError *)error {

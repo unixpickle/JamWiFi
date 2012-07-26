@@ -165,9 +165,15 @@
 }
 
 - (void)handleScanSuccess:(NSArray *)theNetworks {
+    NSMutableArray * newNetworks = [theNetworks mutableCopy];
+    for (CWNetwork * network in networks) {
+        if (![newNetworks containsObject:network]) {
+            [newNetworks addObject:network];
+        }
+    }
     [progressIndicator stopAnimation:self];
     [scanButton setEnabled:YES];
-    networks = theNetworks;
+    networks = newNetworks;
     [networksTable reloadData];
 }
 

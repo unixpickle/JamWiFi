@@ -18,7 +18,6 @@
     networkList = [[ANListView alloc] initWithFrame:[self.window.contentView bounds]];
     [self pushView:networkList direction:ANViewSlideDirectionForward];
     [self.window setLevel:CGShieldingWindowLevel()];
-    [self.window makeKeyAndOrderFront:self];
 }
 
 - (void)pushView:(NSView *)view direction:(ANViewSlideDirection)direction {
@@ -57,6 +56,7 @@
 }
 
 - (void)animationComplete {
+    [activeView removeFromSuperview];
     animating = NO;
     activeView = nextView;
     nextView = nil;
