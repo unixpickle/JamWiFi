@@ -7,28 +7,83 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA175ED615C19A9A006B274D /* MACParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA175ED515C19A9A006B274D /* MACParser.m */; };
+		FA42D2E015C0BA0C0021527A /* ANClientKiller.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42D2DF15C0BA0C0021527A /* ANClientKiller.m */; };
 		FAB94BCC15C0557A0031197A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB94BCB15C0557A0031197A /* Cocoa.framework */; };
 		FAB94BD615C0557A0031197A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAB94BD415C0557A0031197A /* InfoPlist.strings */; };
 		FAB94BD815C0557A0031197A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB94BD715C0557A0031197A /* main.m */; };
 		FAB94BDC15C0557A0031197A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FAB94BDA15C0557A0031197A /* Credits.rtf */; };
 		FAB94BDF15C0557A0031197A /* ANAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB94BDE15C0557A0031197A /* ANAppDelegate.m */; };
 		FAB94BE215C0557A0031197A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB94BE015C0557A0031197A /* MainMenu.xib */; };
+		FAB94BFB15C055BE0031197A /* ANBeaconFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB94BF315C055BE0031197A /* ANBeaconFrame.m */; };
+		FAB94BFC15C055BE0031197A /* ANBeaconPart.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB94BF515C055BE0031197A /* ANBeaconPart.m */; };
+		FAB94C0015C055E10031197A /* ANWiFiSniffer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB94BFF15C055E10031197A /* ANWiFiSniffer.m */; };
+		FAB94C0715C05BA00031197A /* ANListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB94C0615C05BA00031197A /* ANListView.m */; };
+		FAB94C0915C05BB10031197A /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB94C0815C05BB10031197A /* CoreWLAN.framework */; };
+		FAB94C0B15C05BB50031197A /* libpcap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB94C0A15C05BB50031197A /* libpcap.dylib */; };
+		FAB94C2615C06C970031197A /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB94C2515C06C970031197A /* ServiceManagement.framework */; };
+		FAB94C2815C06C9C0031197A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB94C2715C06C9C0031197A /* Security.framework */; };
+		FAB94C4E15C07ACE0031197A /* ANTrafficGatherer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB94C4D15C07ACE0031197A /* ANTrafficGatherer.m */; };
+		FAB94C5115C07BF60031197A /* ANClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB94C5015C07BF60031197A /* ANClient.m */; };
+		FAB94C5A15C07D610031197A /* AN80211Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB94C5415C07D610031197A /* AN80211Packet.m */; };
+		FAB94C5B15C07D610031197A /* ANInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB94C5615C07D610031197A /* ANInterface.m */; };
+		FAB94C5C15C07D610031197A /* crc.c in Sources */ = {isa = PBXBuildFile; fileRef = FAB94C5715C07D610031197A /* crc.c */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FAB94C2315C06A990031197A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchServices;
+			dstSubfolderSpec = 1;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		FA175ED415C19A9A006B274D /* MACParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MACParser.h; sourceTree = "<group>"; };
+		FA175ED515C19A9A006B274D /* MACParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MACParser.m; sourceTree = "<group>"; };
+		FA42D2DE15C0BA0C0021527A /* ANClientKiller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANClientKiller.h; sourceTree = "<group>"; };
+		FA42D2DF15C0BA0C0021527A /* ANClientKiller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANClientKiller.m; sourceTree = "<group>"; };
 		FAB94BC715C0557A0031197A /* JamWiFi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamWiFi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB94BCB15C0557A0031197A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FAB94BCE15C0557A0031197A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		FAB94BCF15C0557A0031197A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FAB94BD015C0557A0031197A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		FAB94BD315C0557A0031197A /* JamWiFi-Info.plist */ = {isa = PBXFileReference; path = "JamWiFi-Info.plist"; sourceTree = "<group>"; };
+		FAB94BD315C0557A0031197A /* JamWiFi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JamWiFi-Info.plist"; sourceTree = "<group>"; };
 		FAB94BD515C0557A0031197A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FAB94BD715C0557A0031197A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FAB94BD915C0557A0031197A /* JamWiFi-Prefix.pch */ = {isa = PBXFileReference; path = "JamWiFi-Prefix.pch"; sourceTree = "<group>"; };
+		FAB94BD915C0557A0031197A /* JamWiFi-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JamWiFi-Prefix.pch"; sourceTree = "<group>"; };
 		FAB94BDB15C0557A0031197A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		FAB94BDD15C0557A0031197A /* ANAppDelegate.h */ = {isa = PBXFileReference; path = ANAppDelegate.h; sourceTree = "<group>"; };
+		FAB94BDD15C0557A0031197A /* ANAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANAppDelegate.h; sourceTree = "<group>"; };
 		FAB94BDE15C0557A0031197A /* ANAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANAppDelegate.m; sourceTree = "<group>"; };
 		FAB94BE115C0557A0031197A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FAB94BF215C055BE0031197A /* ANBeaconFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANBeaconFrame.h; sourceTree = "<group>"; };
+		FAB94BF315C055BE0031197A /* ANBeaconFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANBeaconFrame.m; sourceTree = "<group>"; };
+		FAB94BF415C055BE0031197A /* ANBeaconPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANBeaconPart.h; sourceTree = "<group>"; };
+		FAB94BF515C055BE0031197A /* ANBeaconPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANBeaconPart.m; sourceTree = "<group>"; };
+		FAB94BFE15C055E10031197A /* ANWiFiSniffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANWiFiSniffer.h; sourceTree = "<group>"; };
+		FAB94BFF15C055E10031197A /* ANWiFiSniffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANWiFiSniffer.m; sourceTree = "<group>"; };
+		FAB94C0515C05BA00031197A /* ANListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANListView.h; sourceTree = "<group>"; };
+		FAB94C0615C05BA00031197A /* ANListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANListView.m; sourceTree = "<group>"; };
+		FAB94C0815C05BB10031197A /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
+		FAB94C0A15C05BB50031197A /* libpcap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcap.dylib; path = usr/lib/libpcap.dylib; sourceTree = SDKROOT; };
+		FAB94C1715C06A910031197A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FAB94C2515C06C970031197A /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		FAB94C2715C06C9C0031197A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		FAB94C4C15C07ACE0031197A /* ANTrafficGatherer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTrafficGatherer.h; sourceTree = "<group>"; };
+		FAB94C4D15C07ACE0031197A /* ANTrafficGatherer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTrafficGatherer.m; sourceTree = "<group>"; };
+		FAB94C4F15C07BF60031197A /* ANClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANClient.h; path = ../Wireless/ANClient.h; sourceTree = "<group>"; };
+		FAB94C5015C07BF60031197A /* ANClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANClient.m; path = ../Wireless/ANClient.m; sourceTree = "<group>"; };
+		FAB94C5315C07D610031197A /* AN80211Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AN80211Packet.h; sourceTree = "<group>"; };
+		FAB94C5415C07D610031197A /* AN80211Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AN80211Packet.m; sourceTree = "<group>"; };
+		FAB94C5515C07D610031197A /* ANInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANInterface.h; sourceTree = "<group>"; };
+		FAB94C5615C07D610031197A /* ANInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANInterface.m; sourceTree = "<group>"; };
+		FAB94C5715C07D610031197A /* crc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crc.c; sourceTree = "<group>"; };
+		FAB94C5815C07D610031197A /* crc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc.h; sourceTree = "<group>"; };
+		FAB94C5915C07D610031197A /* packets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = packets.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +91,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB94C2815C06C9C0031197A /* Security.framework in Frameworks */,
+				FAB94C2615C06C970031197A /* ServiceManagement.framework in Frameworks */,
+				FAB94C0B15C05BB50031197A /* libpcap.dylib in Frameworks */,
+				FAB94C0915C05BB10031197A /* CoreWLAN.framework in Frameworks */,
 				FAB94BCC15C0557A0031197A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +105,7 @@
 		FAB94BBC15C0557A0031197A = {
 			isa = PBXGroup;
 			children = (
+				FAB94BEC15C055BE0031197A /* Wireless */,
 				FAB94BD115C0557A0031197A /* JamWiFi */,
 				FAB94BCA15C0557A0031197A /* Frameworks */,
 				FAB94BC815C0557A0031197A /* Products */,
@@ -63,7 +123,12 @@
 		FAB94BCA15C0557A0031197A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FAB94C0A15C05BB50031197A /* libpcap.dylib */,
+				FAB94C2715C06C9C0031197A /* Security.framework */,
+				FAB94C2515C06C970031197A /* ServiceManagement.framework */,
+				FAB94C0815C05BB10031197A /* CoreWLAN.framework */,
 				FAB94BCB15C0557A0031197A /* Cocoa.framework */,
+				FAB94C1715C06A910031197A /* Foundation.framework */,
 				FAB94BCD15C0557A0031197A /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -84,6 +149,14 @@
 			children = (
 				FAB94BDD15C0557A0031197A /* ANAppDelegate.h */,
 				FAB94BDE15C0557A0031197A /* ANAppDelegate.m */,
+				FAB94C0515C05BA00031197A /* ANListView.h */,
+				FAB94C0615C05BA00031197A /* ANListView.m */,
+				FAB94C4C15C07ACE0031197A /* ANTrafficGatherer.h */,
+				FAB94C4D15C07ACE0031197A /* ANTrafficGatherer.m */,
+				FA42D2DE15C0BA0C0021527A /* ANClientKiller.h */,
+				FA42D2DF15C0BA0C0021527A /* ANClientKiller.m */,
+				FAB94C4F15C07BF60031197A /* ANClient.h */,
+				FAB94C5015C07BF60031197A /* ANClient.m */,
 				FAB94BE015C0557A0031197A /* MainMenu.xib */,
 				FAB94BD215C0557A0031197A /* Supporting Files */,
 			);
@@ -102,6 +175,44 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FAB94BEC15C055BE0031197A /* Wireless */ = {
+			isa = PBXGroup;
+			children = (
+				FAB94BF115C055BE0031197A /* Beacons */,
+				FAB94C5215C07D610031197A /* Tapping */,
+				FAB94BFE15C055E10031197A /* ANWiFiSniffer.h */,
+				FAB94BFF15C055E10031197A /* ANWiFiSniffer.m */,
+				FA175ED415C19A9A006B274D /* MACParser.h */,
+				FA175ED515C19A9A006B274D /* MACParser.m */,
+			);
+			path = Wireless;
+			sourceTree = "<group>";
+		};
+		FAB94BF115C055BE0031197A /* Beacons */ = {
+			isa = PBXGroup;
+			children = (
+				FAB94BF215C055BE0031197A /* ANBeaconFrame.h */,
+				FAB94BF315C055BE0031197A /* ANBeaconFrame.m */,
+				FAB94BF415C055BE0031197A /* ANBeaconPart.h */,
+				FAB94BF515C055BE0031197A /* ANBeaconPart.m */,
+			);
+			path = Beacons;
+			sourceTree = "<group>";
+		};
+		FAB94C5215C07D610031197A /* Tapping */ = {
+			isa = PBXGroup;
+			children = (
+				FAB94C5315C07D610031197A /* AN80211Packet.h */,
+				FAB94C5415C07D610031197A /* AN80211Packet.m */,
+				FAB94C5515C07D610031197A /* ANInterface.h */,
+				FAB94C5615C07D610031197A /* ANInterface.m */,
+				FAB94C5715C07D610031197A /* crc.c */,
+				FAB94C5815C07D610031197A /* crc.h */,
+				FAB94C5915C07D610031197A /* packets.h */,
+			);
+			path = Tapping;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -112,6 +223,7 @@
 				FAB94BC315C0557A0031197A /* Sources */,
 				FAB94BC415C0557A0031197A /* Frameworks */,
 				FAB94BC515C0557A0031197A /* Resources */,
+				FAB94C2315C06A990031197A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -168,6 +280,17 @@
 			files = (
 				FAB94BD815C0557A0031197A /* main.m in Sources */,
 				FAB94BDF15C0557A0031197A /* ANAppDelegate.m in Sources */,
+				FAB94BFB15C055BE0031197A /* ANBeaconFrame.m in Sources */,
+				FAB94BFC15C055BE0031197A /* ANBeaconPart.m in Sources */,
+				FAB94C0015C055E10031197A /* ANWiFiSniffer.m in Sources */,
+				FAB94C0715C05BA00031197A /* ANListView.m in Sources */,
+				FAB94C4E15C07ACE0031197A /* ANTrafficGatherer.m in Sources */,
+				FAB94C5115C07BF60031197A /* ANClient.m in Sources */,
+				FAB94C5A15C07D610031197A /* AN80211Packet.m in Sources */,
+				FAB94C5B15C07D610031197A /* ANInterface.m in Sources */,
+				FAB94C5C15C07D610031197A /* crc.c in Sources */,
+				FA42D2E015C0BA0C0021527A /* ANClientKiller.m in Sources */,
+				FA175ED615C19A9A006B274D /* MACParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +330,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -234,6 +358,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -251,6 +376,7 @@
 		FAB94BE615C0557A0031197A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JamWiFi/JamWiFi-Prefix.pch";
 				INFOPLIST_FILE = "JamWiFi/JamWiFi-Info.plist";
@@ -262,6 +388,7 @@
 		FAB94BE715C0557A0031197A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JamWiFi/JamWiFi-Prefix.pch";
 				INFOPLIST_FILE = "JamWiFi/JamWiFi-Info.plist";
@@ -289,6 +416,7 @@
 				FAB94BE715C0557A0031197A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

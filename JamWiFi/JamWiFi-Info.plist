@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>com.aqnichol.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.aqnichol.JamWiFi</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -30,5 +30,10 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SMPrivilegedExecutables</key>
+	<dict>
+		<key>com.aqnichol.WiFiDaemon</key>
+		<string>identifier com.aqnichol.WiFiDaemon and certificate leaf[subject.CN] = &quot;WiFiJam Certificate&quot;</string>
+	</dict>
 </dict>
 </plist>
