@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FA175ED615C19A9A006B274D /* MACParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA175ED515C19A9A006B274D /* MACParser.m */; };
 		FA42D2E015C0BA0C0021527A /* ANClientKiller.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42D2DF15C0BA0C0021527A /* ANClientKiller.m */; };
+		FA8D07F915C3022500B8EDC4 /* CarbonAppProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8D07F815C3022500B8EDC4 /* CarbonAppProcess.m */; };
+		FA8D07FC15C3024200B8EDC4 /* radio.icns in Resources */ = {isa = PBXBuildFile; fileRef = FA8D07FB15C3024200B8EDC4 /* radio.icns */; };
 		FAB94BCC15C0557A0031197A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB94BCB15C0557A0031197A /* Cocoa.framework */; };
 		FAB94BD615C0557A0031197A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAB94BD415C0557A0031197A /* InfoPlist.strings */; };
 		FAB94BD815C0557A0031197A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB94BD715C0557A0031197A /* main.m */; };
@@ -47,6 +49,9 @@
 		FA175ED515C19A9A006B274D /* MACParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MACParser.m; sourceTree = "<group>"; };
 		FA42D2DE15C0BA0C0021527A /* ANClientKiller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANClientKiller.h; sourceTree = "<group>"; };
 		FA42D2DF15C0BA0C0021527A /* ANClientKiller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANClientKiller.m; sourceTree = "<group>"; };
+		FA8D07F715C3022500B8EDC4 /* CarbonAppProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarbonAppProcess.h; sourceTree = "<group>"; };
+		FA8D07F815C3022500B8EDC4 /* CarbonAppProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarbonAppProcess.m; sourceTree = "<group>"; };
+		FA8D07FB15C3024200B8EDC4 /* radio.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = radio.icns; sourceTree = "<group>"; };
 		FAB94BC715C0557A0031197A /* JamWiFi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamWiFi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB94BCB15C0557A0031197A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FAB94BCE15C0557A0031197A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -147,6 +152,8 @@
 		FAB94BD115C0557A0031197A /* JamWiFi */ = {
 			isa = PBXGroup;
 			children = (
+				FA8D07F715C3022500B8EDC4 /* CarbonAppProcess.h */,
+				FA8D07F815C3022500B8EDC4 /* CarbonAppProcess.m */,
 				FAB94BDD15C0557A0031197A /* ANAppDelegate.h */,
 				FAB94BDE15C0557A0031197A /* ANAppDelegate.m */,
 				FAB94C0515C05BA00031197A /* ANListView.h */,
@@ -166,6 +173,7 @@
 		FAB94BD215C0557A0031197A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA8D07FB15C3024200B8EDC4 /* radio.icns */,
 				FAB94BD315C0557A0031197A /* JamWiFi-Info.plist */,
 				FAB94BD415C0557A0031197A /* InfoPlist.strings */,
 				FAB94BD715C0557A0031197A /* main.m */,
@@ -268,6 +276,7 @@
 				FAB94BD615C0557A0031197A /* InfoPlist.strings in Resources */,
 				FAB94BDC15C0557A0031197A /* Credits.rtf in Resources */,
 				FAB94BE215C0557A0031197A /* MainMenu.xib in Resources */,
+				FA8D07FC15C3024200B8EDC4 /* radio.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +300,7 @@
 				FAB94C5C15C07D610031197A /* crc.c in Sources */,
 				FA42D2E015C0BA0C0021527A /* ANClientKiller.m in Sources */,
 				FA175ED615C19A9A006B274D /* MACParser.m in Sources */,
+				FA8D07F915C3022500B8EDC4 /* CarbonAppProcess.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

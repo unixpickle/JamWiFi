@@ -17,7 +17,7 @@
     // Insert code here to initialize your application
     networkList = [[ANListView alloc] initWithFrame:[self.window.contentView bounds]];
     [self pushView:networkList direction:ANViewSlideDirectionForward];
-    [self.window setLevel:CGShieldingWindowLevel()];
+    [[CarbonAppProcess currentProcess] makeFrontmost];
 }
 
 - (void)pushView:(NSView *)view direction:(ANViewSlideDirection)direction {

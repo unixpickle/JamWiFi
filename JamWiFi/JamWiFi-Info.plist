@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>radio.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.aqnichol.JamWiFi</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -17,23 +17,18 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.1</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2012 __MyCompanyName__. All rights reserved.</string>
+	<string>Copyright © 2012 Jitsik. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SMPrivilegedExecutables</key>
-	<dict>
-		<key>com.aqnichol.WiFiDaemon</key>
-		<string>identifier com.aqnichol.WiFiDaemon and certificate leaf[subject.CN] = &quot;WiFiJam Certificate&quot;</string>
-	</dict>
 </dict>
 </plist>
