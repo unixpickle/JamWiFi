@@ -44,7 +44,7 @@
         }
         networksForChannel = [mNetworksPerChannel copy];
         
-        jamTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(performNextRound) userInfo:nil repeats:YES];
+        jamTimer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(performNextRound) userInfo:nil repeats:YES];
         [self performNextRound];
         
         [self configureUI];
