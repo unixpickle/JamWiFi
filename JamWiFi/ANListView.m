@@ -53,20 +53,26 @@
         NSTableColumn * channelColumn = [[NSTableColumn alloc] initWithIdentifier:@"channel"];
         [[channelColumn headerCell] setStringValue:@"CH"];
         [channelColumn setWidth:40];
-        [channelColumn setEditable:NO];
+        [channelColumn setEditable:YES];
         [networksTable addTableColumn:channelColumn];
         
         NSTableColumn * essidColumn = [[NSTableColumn alloc] initWithIdentifier:@"essid"];
         [[essidColumn headerCell] setStringValue:@"ESSID"];
         [essidColumn setWidth:200];
-        [essidColumn setEditable:NO];
+        [essidColumn setEditable:YES];
         [networksTable addTableColumn:essidColumn];
         
         NSTableColumn * bssidColumn = [[NSTableColumn alloc] initWithIdentifier:@"bssid"];
         [[bssidColumn headerCell] setStringValue:@"BSSID"];
         [bssidColumn setWidth:120];
-        [bssidColumn setEditable:NO];
+        [bssidColumn setEditable:YES];
         [networksTable addTableColumn:bssidColumn];
+        
+        NSTableColumn * encColumn = [[NSTableColumn alloc] initWithIdentifier:@"enc"];
+        [[encColumn headerCell] setStringValue:@"Security"];
+        [encColumn setWidth:60];
+        [encColumn setEditable:YES];
+        [networksTable addTableColumn:encColumn];
         
         [networksScrollView setDocumentView:networksTable];
         [networksScrollView setBorderType:NSBezelBorder];
@@ -137,14 +143,21 @@
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     CWNetwork * network = [networks objectAtIndex:row];
+    
     if ([[tableColumn identifier] isEqualToString:@"channel"]) {
         return [NSNumber numberWithInt:(int)network.wlanChannel.channelNumber];
     } else if ([[tableColumn identifier] isEqualToString:@"essid"]) {
         return network.ssid;
     } else if ([[tableColumn identifier] isEqualToString:@"bssid"]) {
         return network.bssid;
+    } else if ([[tableColumn identifier] isEqualToString:@"enc"]) {
+        return [self securityTypeString:network];
     }
     return nil;
+}
+
+- (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    return;
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
@@ -152,6 +165,18 @@
         [jamButton setEnabled:YES];
     } else {
         [jamButton setEnabled:NO];
+    }
+}
+
+- (NSString *)securityTypeString:(CWNetwork *)network {
+    if ([network supportsSecurity:kCWSecurityDynamicWEP]) {
+        return @"WEP";
+    } else if ([network supportsSecurity:kCWSecurityModeOpen]) {
+        return @"Open";
+    } else if ([network supportsSecurity:kCWSecurityEnterprise]) {
+        return @"Enterprise";
+    } else {
+        return @"WPA";
     }
 }
 

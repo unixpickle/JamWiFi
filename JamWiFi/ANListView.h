@@ -27,4 +27,6 @@
 - (void)disassociateButton:(id)sender;
 - (void)jamButton:(id)sender;
 
+- (NSString *)securityTypeString:(CWNetwork *)network;
+
 @end

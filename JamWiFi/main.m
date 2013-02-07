@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
             myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, myToolPath, myFlags, myArguments,
                                                           NULL);
             AuthorizationFree(myAuthorizationRef, kAuthorizationFlagDefaults);
-            return 0;
+            exit(0);
         }
         return NSApplicationMain(argc, (const char **)argv);
     }
