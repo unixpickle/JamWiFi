@@ -71,47 +71,49 @@
         }
         AN80211Packet * packet = nil;
         while (true) {
-            if ([[NSThread currentThread] isCancelled]) {
-                [interface closeInterface];
-                interface = nil;
-                return;
-            }
-            [channelLock lock];
-            if (hopChannel) {
-                [[interface interface] setWLANChannel:hopChannel error:nil];
-                hopChannel = nil;
-            }
-            [channelLock unlock];
-            @try {
-                packet = [interface nextPacket:NO];
-            } @catch (NSException *exception) {
-                [self informDelegateError:[NSError errorWithDomain:@"pcap_next_ex" code:1 userInfo:nil]];
-                [interface closeInterface];
-                interface = nil;
-                return;
-            }
-            if ([[NSThread currentThread] isCancelled]) {
-                [interface closeInterface];
-                interface = nil;
-                return;
-            }
-            if (packet) [self informDelegatePacket:packet];
-            AN80211Packet * wPacket = nil;
-            @synchronized (writeBuffer) {
-                if ([writeBuffer count] > 0) {
-                    wPacket = [writeBuffer objectAtIndex:0];
-                    [writeBuffer removeObjectAtIndex:0];
-                }
-            }
-            if (wPacket) {
-                if (![interface writePacket:wPacket]) {
-                    [self informDelegateError:[NSError errorWithDomain:@"pcap_inject" code:1 userInfo:nil]];
+            @autoreleasepool {
+                if ([[NSThread currentThread] isCancelled]) {
+                    [interface closeInterface];
                     interface = nil;
                     return;
                 }
-            }
-            if (!packet && !wPacket) {
-                usleep(5000); // sleep for 5 milliseconds
+                [channelLock lock];
+                if (hopChannel) {
+                    [[interface interface] setWLANChannel:hopChannel error:nil];
+                    hopChannel = nil;
+                }
+                [channelLock unlock];
+                @try {
+                    packet = [interface nextPacket:NO];
+                } @catch (NSException * exception) {
+                    [self informDelegateError:[NSError errorWithDomain:@"pcap_next_ex" code:1 userInfo:nil]];
+                    [interface closeInterface];
+                    interface = nil;
+                    return;
+                }
+                if ([[NSThread currentThread] isCancelled]) {
+                    [interface closeInterface];
+                    interface = nil;
+                    return;
+                }
+                if (packet) [self informDelegatePacket:packet];
+                AN80211Packet * wPacket = nil;
+                @synchronized (writeBuffer) {
+                    if ([writeBuffer count] > 0) {
+                        wPacket = [writeBuffer objectAtIndex:0];
+                        [writeBuffer removeObjectAtIndex:0];
+                    }
+                }
+                if (wPacket) {
+                    if (![interface writePacket:wPacket]) {
+                        [self informDelegateError:[NSError errorWithDomain:@"pcap_inject" code:1 userInfo:nil]];
+                        interface = nil;
+                        return;
+                    }
+                }
+                if (!packet && !wPacket) {
+                    usleep(5000); // sleep for 5 milliseconds
+                }
             }
         }
     }

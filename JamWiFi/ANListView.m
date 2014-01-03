@@ -171,7 +171,7 @@
 - (NSString *)securityTypeString:(CWNetwork *)network {
     if ([network supportsSecurity:kCWSecurityDynamicWEP]) {
         return @"WEP";
-    } else if ([network supportsSecurity:kCWSecurityModeOpen]) {
+    } else if ([network supportsSecurity:kCWSecurityNone]) {
         return @"Open";
     } else if ([network supportsSecurity:kCWSecurityEnterprise]) {
         return @"Enterprise";

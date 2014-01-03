@@ -150,6 +150,7 @@ uint32_t crc32(const char *buf, size_t len)
       for ( ; len; --len, ++buf)
       {
             crc = UPDC32(*buf, crc);
+          printf("crc %x\n", crc);
       }
 
       return crc;

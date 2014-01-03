@@ -11,6 +11,7 @@
 #import <Security/Authorization.h>
 
 int main(int argc, char *argv[]) {
+    
     @autoreleasepool {
         if (geteuid()) {
             OSStatus myStatus;
