@@ -117,7 +117,7 @@
     
     ANWiFiSniffer * sniffer = [[ANWiFiSniffer alloc] initWithInterfaceName:interfaceName];
     ANTrafficGatherer * gatherer = [[ANTrafficGatherer alloc] initWithFrame:self.bounds sniffer:sniffer networks:theNetworks];
-    [[NSApp delegate] pushView:gatherer direction:ANViewSlideDirectionForward];
+    [(ANAppDelegate *)[NSApp delegate] pushView:gatherer direction:ANViewSlideDirectionForward];
 }
 
 - (void)scanInBackground {

@@ -104,12 +104,12 @@
     [sniffer stop];
     [sniffer setDelegate:nil];
     sniffer = nil;
-    [(id)[NSApp delegate] showNetworkList];
+    [(ANAppDelegate *)[NSApp delegate] showNetworkList];
 }
 
 - (void)continueButton:(id)sender {
     ANClientKiller * killer = [[ANClientKiller alloc] initWithFrame:self.bounds sniffer:sniffer networks:networks clients:allClients];
-    [(id)[NSApp delegate] pushView:killer direction:ANViewSlideDirectionForward];
+    [(ANAppDelegate *)[NSApp delegate] pushView:killer direction:ANViewSlideDirectionForward];
 }
 
 #pragma mark - Table View -
