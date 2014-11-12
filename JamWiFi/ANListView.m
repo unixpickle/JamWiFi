@@ -58,7 +58,7 @@
         
         NSTableColumn * essidColumn = [[NSTableColumn alloc] initWithIdentifier:@"essid"];
         [[essidColumn headerCell] setStringValue:@"ESSID"];
-        [essidColumn setWidth:200];
+        [essidColumn setWidth:170];
         [essidColumn setEditable:YES];
         [networksTable addTableColumn:essidColumn];
         
@@ -73,7 +73,13 @@
         [encColumn setWidth:60];
         [encColumn setEditable:YES];
         [networksTable addTableColumn:encColumn];
-        
+      
+        NSTableColumn * rssiColumn = [[NSTableColumn alloc] initWithIdentifier:@"rssi"];
+        [[rssiColumn headerCell] setStringValue:@"RSSI"];
+        [rssiColumn setWidth:60];
+        [rssiColumn setEditable:YES];
+        [networksTable addTableColumn:rssiColumn];
+      
         [networksScrollView setDocumentView:networksTable];
         [networksScrollView setBorderType:NSBezelBorder];
         [networksScrollView setHasVerticalScroller:YES];
@@ -152,6 +158,8 @@
         return network.bssid;
     } else if ([[tableColumn identifier] isEqualToString:@"enc"]) {
         return [self securityTypeString:network];
+    } else if ([[tableColumn identifier] isEqualToString:@"rssi"]) {
+        return [[NSNumber numberWithInteger:network.rssiValue] description];
     }
     return nil;
 }
