@@ -15,6 +15,7 @@
 - (id)initWithInterface:(NSString *)name {
     if ((self = [super init])) {
         interface = [[CWInterface alloc] initWithInterfaceName:name];
+        [interface disassociate];
         if (!interface) return nil;
         pcapHandle = pcap_open_live([name UTF8String], 65536, 1, 1, pcapError);
         if (!pcapHandle) return nil;

@@ -79,7 +79,7 @@
                 }
                 [channelLock lock];
                 if (hopChannel) {
-                    [[interface interface] setWLANChannel:hopChannel error:nil];
+                    [interface setChannel:hopChannel.channelNumber];
                     hopChannel = nil;
                 }
                 [channelLock unlock];
