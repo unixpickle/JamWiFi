@@ -80,6 +80,12 @@
     [packetsColumn setEditable:NO];
     [clientsTable addTableColumn:packetsColumn];
     
+    NSTableColumn * rssiColumn = [[NSTableColumn alloc] initWithIdentifier:@"rssi"];
+    [[rssiColumn headerCell] setStringValue:@"RSSI"];
+    [rssiColumn setWidth:70];
+    [rssiColumn setEditable:NO];
+    [clientsTable addTableColumn:rssiColumn];
+    
     [clientsScrollView setDocumentView:clientsTable];
     [clientsScrollView setBorderType:NSBezelBorder];
     [clientsScrollView setHasVerticalScroller:YES];
@@ -128,6 +134,8 @@
         return [NSNumber numberWithInt:client.packetCount];
     } else if ([[tableColumn identifier] isEqualToString:@"enabled"]) {
         return [NSNumber numberWithBool:client.enabled];
+    } else if ([[tableColumn identifier] isEqualToString:@"rssi"]) {
+        return [NSNumber numberWithFloat:client.rssi];
     }
     return nil;
 }
@@ -211,6 +219,7 @@
         } else {
             ANClient * origClient = [allClients objectAtIndex:[allClients indexOfObject:clientObj]];
             origClient.packetCount += 1;
+            origClient.rssi = (float)packet.rssi;
         }
         [clientsTable reloadData];
     }

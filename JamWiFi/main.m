@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <ServiceManagement/ServiceManagement.h>
 #import <Security/Authorization.h>
+#import <CoreWLAN/CoreWLAN.h>
 
 int main(int argc, char *argv[]) {
     

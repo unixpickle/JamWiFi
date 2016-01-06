@@ -8,6 +8,8 @@
 
 #import "ANInterface.h"
 
+static int getRadiotapRSSI(const u_char * packet);
+
 @implementation ANInterface
 
 @synthesize interface;
@@ -42,7 +44,9 @@
             const u_char * dataBuffer = buffer + words[1];
             uint32_t len = header->caplen - words[1];
             NSData * data = [NSData dataWithBytes:dataBuffer length:len];
-            return [[AN80211Packet alloc] initWithData:data];
+            AN80211Packet * result = [[AN80211Packet alloc] initWithData:data];
+            result.rssi = getRadiotapRSSI(buffer);
+            return result;
         }
         usleep(10000);
     } while (blocking);
@@ -83,3 +87,34 @@
 }
 
 @end
+
+static int getRadiotapRSSI(const u_char * packet) {
+    u_char present = packet[4];
+    if (!(present & 0x20)) {
+        return 6;
+    }
+    size_t fieldOffset = 0;
+    if (present & 1) {
+        fieldOffset += 8;
+    }
+    if (present & 2) {
+        fieldOffset += 1;
+    }
+    if (present & 4) {
+        fieldOffset += 1;
+    }
+    if (present & 8) {
+        if (fieldOffset & 1) {
+            fieldOffset++;
+        }
+        fieldOffset += 4;
+    }
+    if (present & 0x10) {
+        if (fieldOffset & 1) {
+            fieldOffset++;
+        }
+        fieldOffset += 2;
+    }
+    
+    return (int)((char *)packet)[8+fieldOffset];
+}

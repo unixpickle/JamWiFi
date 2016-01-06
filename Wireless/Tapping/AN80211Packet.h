@@ -18,6 +18,8 @@
     int bodyLength;
 }
 
+@property (readwrite) int rssi;
+
 - (id)initWithData:(NSData *)data;
 - (const MACHeader *)macHeader;
 - (const unsigned char *)packetData;

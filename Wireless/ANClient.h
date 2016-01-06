@@ -20,6 +20,7 @@
 @property (readwrite) int deauthsSent;
 @property (readonly) unsigned char * macAddress;
 @property (readonly) unsigned char * bssid;
+@property (readwrite) float rssi;
 @property (readwrite) BOOL enabled;
 
 - (id)initWithMac:(const unsigned char *)mac bssid:(const unsigned char *)aBSSID;

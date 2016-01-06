@@ -14,6 +14,7 @@
 @synthesize deauthsSent;
 @synthesize macAddress;
 @synthesize bssid;
+@synthesize rssi;
 @synthesize enabled;
 
 - (id)initWithMac:(const unsigned char *)mac bssid:(const unsigned char *)aBSSID {
