@@ -20,6 +20,10 @@
     [[CarbonAppProcess currentProcess] makeFrontmost];
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+    return YES;
+}
+
 - (void)pushView:(NSView *)view direction:(ANViewSlideDirection)direction {
     if (animating) return;
     __weak id weakSelf = self;
