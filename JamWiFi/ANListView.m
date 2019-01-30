@@ -118,7 +118,7 @@
 - (void)jamButton:(id)sender {
     NSMutableArray * theNetworks = [NSMutableArray array];
     [[networksTable selectedRowIndexes] enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-        [theNetworks addObject:[networks objectAtIndex:idx]];
+        [theNetworks addObject:[self->networks objectAtIndex:idx]];
     }];
     
     ANWiFiSniffer * sniffer = [[ANWiFiSniffer alloc] initWithInterfaceName:interfaceName];
@@ -131,7 +131,7 @@
     __weak id weakSelf = self;
     dispatch_async(queue, ^{
         CWInterface * interface = [CWInterface interface];
-        interfaceName = interface.interfaceName;
+        self->interfaceName = interface.interfaceName;
         NSError * error = nil;
         NSArray * nets = [[interface scanForNetworksWithSSID:nil error:&error] allObjects];
         if (error) NSLog(@"wifi scan error: %@", error);
