@@ -1,3 +1,8 @@
+Deprecated
+==========
+
+*JamWiFi* is no longer being actively developed. See other projects like [0x0XDev/JamWiFi](https://github.com/0x0XDev/JamWiFi).
+
 What Does It Do?
 ================
 
